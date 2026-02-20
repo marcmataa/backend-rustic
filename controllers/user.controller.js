@@ -1,12 +1,14 @@
-import { createUserService } from "../services/user.service.js"
-export async function registerController(req, res){
-    try {
-        //Haces la prueba de si todo va bien, el nuevo usuario sea igual al valor que le damos en el body, todo ese req.body ahora se converitra en el userData.
-        const newUser = await createUserService(req.body);
-        //Aqui enviamos el mensaje y status si todo esta correcto
-        res.status(201).json({msg: "Usuario creado", data:newUser})
-    } catch(e){
-        //Si hay algun error avisa
-        res.status(400).json(e.message)
-    }
+// Importaciones
+import { RegisterService, LoginService } from "../services/user.service.js";
+
+export async function RegisterController(req, res) {
+    //   Se le da a "response" el valor correspondiente del return que da el RegisterService 
+    const response = await RegisterService(req.body);
+    //El console.log lo que lee es el return correspondiente de el register.service
+    console.log(response)
+    // Creamos el res.status que lo que hace con el response.status cojer el valor status que tiene el response que ha recogido de RegisterService, y le damos el succes de true y el mensaje que lleva el reponse
+    res.status(response.status).json({
+        success: true,
+        message: response.message
+    })
 }
