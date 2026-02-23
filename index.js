@@ -4,7 +4,8 @@ import cors from 'cors'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import UserRouter from './routes/user.routes.js'
+import ApiRouter from './routes/user.routes.js'
+import CartaRouter from './routes/carta.routes.js'
 
 //Configuraciones
 dotenv.config()
@@ -13,7 +14,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api', UserRouter);
+app.use('/api', ApiRouter); 
+app.use('/carta', CartaRouter)
 
 
 const PORT= process.env.PORT||3001;
