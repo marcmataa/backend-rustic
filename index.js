@@ -4,7 +4,7 @@ import cors from 'cors'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import ApiRouter from './routes/user.routes.js'
+import UserRouter from './routes/user.routes.js'
 import CartaRouter from './routes/carta.routes.js'
 
 //Configuraciones
@@ -14,7 +14,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api', ApiRouter); 
+app.use('/user', UserRouter); 
 app.use('/carta', CartaRouter)
 
 
