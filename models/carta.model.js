@@ -17,7 +17,7 @@ export function CartaModel() {
     category: {
       type: String,
       required: true,
-      enum: ["entrantes", "burguers", "brasa", "postres"],
+      enum: ["entrantes", "burguers", "brasa","cocas", "postres"],
     },
   });
   const CartaModel = db.models.Carta || db.model("Carta", CartaSchema, "Carta");
