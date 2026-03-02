@@ -11,7 +11,8 @@ export async function RegisterController(req, res) {
   res.status(response.status).json({
     success: response.success,
     message: response.message,
-    token: response.token
+    token: response.token,
+    role: response.role
   });
 }
 export async function LoginController(req, res) {

@@ -50,6 +50,7 @@ export async function RegisterService(userData) {
       status: 201,
       message: "Usuario registrado",
       token: token,
+      role: newUser.role
     };
     // Si no ha salido todo bien, ira al catch y te dara el error
   } catch (e) {
