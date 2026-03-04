@@ -17,6 +17,14 @@ export async function RegisterService(userData) {
       message: "Este usuario ya existe",
     };
   }
+  const correctEmail = /^\S+@\S+\.\S+$/;
+  if(!correctEmail.test(userData.email)){
+    return {
+      success: false,
+      status: 400,
+      message: "Por favor, introduce un correo electrónico válido"
+    }
+  }
   if (userData.password.length < 6) {
     return {
       success: false,

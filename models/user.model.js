@@ -16,6 +16,7 @@ export function UserModel() {
         required: [true, "El correo es obligatorio"],
         unique: true,
         lowercase: true, //Lo que hace es guardar de manera automatica todo a letra minuscula
+        match: [/^\S+@\S+\.\S+$/, "Por favor, introduce un correo electrónico válido"]
       },
       password: {
         type: String,

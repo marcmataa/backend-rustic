@@ -16,11 +16,6 @@ export function ReservaModel() {
       type: String,
       required: true,
     },
-    email: {
-      type: String,
-      required: true,
-      lowercase: true,
-    },
     phone: {
       type: String,
       required: true,
@@ -43,7 +38,7 @@ export function ReservaModel() {
     },
     status: {
       type: String,
-      enum: ["confirmada", "cancelada", "completada"],
+      enum: ["confirmada", "en_sala", "completada", "cancelada"],
       default: "confirmada",
     },
   });
