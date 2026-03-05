@@ -126,11 +126,16 @@ export async function GetReservaService(userId, filter = "upcoming") {
     let query = { userId: userId };
 
     if (filter === "upcoming") {
-      // Traemos las reservas que tienes o en las que estas
+      // Traemos las reservas que tienes o en las que estas haciendo pero no han terminado
       query.status = { $in: ["confirmada", "en_sala"] };
+      query.date = { $gte: now }; // La data >= a la de hoy
+      
     } else if (filter === "past") {
-      // Traemos las reservas completadas o canceladas para crear un historial luego
-      query.status = { $in: ["completada", "cancelada"] };
+      // Traemos las reservas completadas o canceladas para crear un historial luego, aparte si las fecha de la reserva es antigua la manda automaticamente al historial aunque no se haya cancelado ni completado ni nada
+     query.$or = [
+    { status: { $in: ["completada", "cancelada"] } },
+    { date: { $lt: now } }
+  ];
     }
     // Busca las reservas del userId y con el sort date: 1 lo que hace es ordenarlas a la mas cercana en el tiempo
     const data = await Reserva.find(query).sort({ date: 1 });
