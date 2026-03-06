@@ -5,10 +5,10 @@ const maxCapacity = 50;
 export async function CreateReservaService(data) {
   console.log("Datos que llegan al servicio para guardar:", data);
   try {
-    // Lo que haces con todo esto es que por ejemplo si los datos de reserva son 2026-03-04 y 14:30, se convierta en 2026-03-04T14:30:00, la T es la que le dice a js donde termina el dia y empieza la hora.
+    // Lo que haces con todo esto es que por ejemplo si los datos de reserva se convierten en 2026-03-04T14:30:00, la T es la que le dice a js donde termina el dia y empieza la hora.
     const start = new Date(`${data.date}T${data.startTime}:00`);
 
-    // Si envias una cadena que no tenga sentido te saltara el error
+    // Si envias una cadena que no sea un numero te saltara el error
     if (isNaN(start.getTime())) {
       throw new Error("Fecha u hora inválida");
     }
@@ -16,6 +16,8 @@ export async function CreateReservaService(data) {
     // Le das la constante de los dias, el domingo es 0, lunes = 1...
     const dayOfWeek = start.getDay();
     const hour = start.getHours();
+
+    // Horario cierre restaurante
     if (dayOfWeek === 1) {
       return {
         success: false,
