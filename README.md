@@ -1,52 +1,33 @@
-2. Entrar en la carpeta del proyecto
+# Rustic Backend API
 
-cd backend-rustic
+## Descripción
 
-3. Instalar dependencias
+Este repositorio contiene el backend de la aplicación **Rustic**.
 
-npm install
+El backend se encarga de gestionar la lógica del servidor, manejar las peticiones HTTP y conectarse a la base de datos. La API permite que el frontend de la aplicación interactúe con el sistema para obtener, crear, modificar y eliminar datos.
 
-4. Ejecutar el servidor en modo desarrollo
-
-npm run dev
+Este proyecto forma parte de una aplicación web completa con frontend y backend separados.
 
 ---
 
-## Funcionalidades del backend
+## Tecnologías utilizadas
 
-- Creación de una API REST
-- Conexión con la base de datos MongoDB
-- Gestión de peticiones HTTP
-- Comunicación con el frontend
-
----
-
-## Estructura del proyecto
-
-src/
-controllers/
-routes/
-models/
-config/
+* Node.js
+* Express
+* MongoDB
+* JavaScript
+* Git
 
 ---
 
-## Autor
+## Base de datos
 
-Marc Mata
+El proyecto utiliza **MongoDB**, una base de datos NoSQL orientada a documentos, para almacenar la información de la aplicación.
 
----
-
-## División de tareas
-
-| Miembro | Tarea |
-|--------|------|
-| Marc Mata | Desarrollo del backend |
-| Marc Mata | Desarrollo del frontend |
-| Marc Mata | Conexión con la base de datos |
+La conexión con la base de datos permite gestionar los datos de forma flexible y escalable.
 
 ---
 
-## Control de versiones
+## Requisitos previos
 
-Este proyecto utiliza Git para el control de versiones y está alojado en GitHub.
+Antes de ejecutar el proyecto es necesari
