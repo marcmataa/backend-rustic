@@ -1,4 +1,5 @@
-import { CreateReservaService, DeleteReservaService, GetReservaService, GetAllReservaService, UpdateAllReservaService } from "../services/reserva.service.js";
+import { response } from "express";
+import { CreateReservaService, DeleteReservaService, GetReservaService, GetAllReservaService, UpdateAllReservaService, GetDisponibilidadService } from "../services/reserva.service.js";
 
 export async function ReservaController(req, res) {
   try {
@@ -93,5 +94,25 @@ export async function UpdateAllReservaController(req, res){
       success: false,
       message: "Error en el controlador al intentar actualizar una reserva"
     })
+  }
+}
+
+export async function GetDisponibilidadController(req, res) {
+  try {
+    const date = req.query.date; 
+    const response = await GetDisponibilidadService(date);
+    
+    res.status(response.status).json({
+      success: response.success,
+      message: response.message,
+      data: response.data
+    });
+    
+  } catch (e) {
+    console.error("Error en el controlador:", e); 
+    res.status(500).json({
+      success: false,
+      message: "Error en el controlador al intentar recoger las reservas"
+    });
   }
 }

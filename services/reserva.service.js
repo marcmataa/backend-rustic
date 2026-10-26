@@ -300,3 +300,32 @@ export async function UpdateAllReservaService(id, data) {
     };
   }
 }
+
+export async function GetDisponibilidadService(dateStr){
+  try {
+    const Reserva = ReservaModel()
+    const startOfDay = new Date(`${dateStr}T00:00:00`);
+    const endOfDay = new Date (`${dateStr}T23:59:59`);
+
+    const dayReservations = await Reserva.find({
+      startTime: { $gte: startOfDay, $lte: endOfDay},
+      status: {$in: ["confirmada", "en_sala"]}
+    });
+    const occupied = dayReservations.map(r=> {
+      const h = new Date(r.startTime).getHours().toString().padStart(2, '0');
+      const m = new Date(r.startTime).getMinutes().toString().padStart(2, '0');
+      return `${h}:${m}`;
+    });
+    return {
+      success: true,
+      status: 200,
+      data: [... new Set(occupied)]
+    }
+  } catch (e){
+    return {
+      success: false,
+      status: 500,
+      message: "Error al calcular la disponibilidad."
+    }
+  }
+}
