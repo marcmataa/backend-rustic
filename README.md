@@ -72,7 +72,13 @@ npm run dev
 * Conexión con la base de datos MongoDB
 * Gestión de peticiones HTTP
 * Comunicación con el frontend
-* Gestión de datos de la aplicación
+* Consulta pública de la carta y edición reservada a administradores autenticados
+* Inicio de sesión únicamente para cuentas con rol `admin`
+
+El registro público de usuarios y las rutas de reservas ya no están disponibles.
+Las cuentas de administrador deben existir previamente en la base de datos. El
+token de inicio de sesión caduca en una hora; las rutas de edición requieren
+enviarlo en la cabecera HTTP de autorización.
 
 ---
 

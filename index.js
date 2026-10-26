@@ -4,7 +4,6 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import UserRouter from './routes/user.routes.js'
 import CartaRouter from './routes/carta.routes.js'
-import ReservaRouter from './routes/reserva.routes.js'
 //Configuraciones
 dotenv.config()
 
@@ -14,7 +13,6 @@ app.use(express.json());
 
 app.use('/user', UserRouter); 
 app.use('/carta', CartaRouter)
-app.use('/reserva', ReservaRouter)
 
 const PORT= process.env.PORT||3001;
 
